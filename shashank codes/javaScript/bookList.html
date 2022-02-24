@@ -1,0 +1,85 @@
+<html>
+<link rel="stylesheet" href="style.css">
+
+<head>
+    <script>
+        function loadxml() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xhttp.open("GET", "booklist.xml", true);
+            xhttp.send();
+        }
+
+        function myFunction(xml) {
+            var x, i, xmlDoc, txt;
+            xmlDoc = xml.responseXML;
+            //var cat = document.getElementById('category').value;
+            //console.log(cat);
+            x = xmlDoc.getElementsByTagName('book');
+            document.getElementById('booklist').innerHTML = `
+                        <table id="tab">
+                            <tr>
+                                <th>Book Name</th>
+                                <th>Author Name</th>
+                                <th>Price</th>
+                            </tr>
+                        </table>`;
+            //console.log(document.getElementById('result').innerHTML);
+            var txt = document.getElementById('booklist').innerHTML;
+            var tb = document.getElementById('tab');
+            for (i = 0; i < x.length; i++) {
+                var row = document.createElement('tr');
+
+                var td = document.createElement('td');
+                td.innerHTML = x[i].children[0].innerHTML;
+                row.appendChild(td);
+
+                var td = document.createElement('td');
+                td.innerHTML = x[i].children[1].innerHTML;
+                row.appendChild(td);
+
+                var td = document.createElement('td');
+                td.innerHTML = x[i].children[2].innerHTML;
+                row.appendChild(td);
+
+                //console.log(row);
+
+                tb.children[0].appendChild(row);
+            }
+        }
+        function tojson() {
+            var bookName = document.getElementById('bookName').value;
+            var authorName = document.getElementById('authorName').value;
+            var bookPrice = document.getElementById('bookPrice').value;
+
+            var string = '{' + '\"Book Name\":' + '\"' + bookName + '\"' + ',' + '\"Author Name\":' + '\"' + authorName + '\"' + ',' + '\"Price\":' + '\"' + bookPrice + '\"' + '}';
+            console.log(string);
+            document.getElementById('jsonData').innerHTML = string;
+
+            //JSONParser parser = new JSONParser();
+            //JSONObject json = (JSONObject) parser.parse(string);
+            //onsole.log(json);
+            const obj = JSON.parse(string);
+            console.log(obj);
+        }
+    </script>
+</head>
+
+<body onload="loadxml()">
+    <!-- fill your code -->
+    <h1>Book List</h1>
+    <div id="booklist"></div>
+    <div class="formData">
+        <div class="fields">Book Name : <input type="text" id="bookName"></div>
+        <div class="fields">Author Name : <input type="text" id="authorName"></div>
+        <div class="fields">Book Price : <input type="text" id="bookPrice"></div>
+    </div>
+    <button id="convertToJSON" onclick="tojson()"> Convert to JSON</button>
+    <div id="jsonData"></div>
+</body>
+
+</html>

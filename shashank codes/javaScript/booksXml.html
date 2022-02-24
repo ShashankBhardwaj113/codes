@@ -1,0 +1,81 @@
+<!-- Fill your code here -->
+<html>
+
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function sortBook() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xhttp.open("GET", "bookDetails.xml", true);
+            xhttp.send();
+        }
+
+        function myFunction(xml) {
+            var x, i, xmlDoc, txt;
+            xmlDoc = xml.responseXML;
+            var cat = document.getElementById('category').value;
+            //console.log(cat);
+            x = xmlDoc.getElementsByTagName('book');
+            document.getElementById('result').innerHTML = `
+                        <table id="tab">
+                            <tr>
+                                <td>Name</td>
+                                <td>Author</td>
+                                <td>Price</td>
+                                <td>Publication</td>
+                            </tr>
+                        </table>`;
+            //console.log(document.getElementById('result').innerHTML);
+            var txt = document.getElementById('result').innerHTML;
+            var tb = document.getElementById('tab');
+            for (i = 0; i < x.length; i++) {
+                if (x[i].getAttribute('category') === cat) {
+                    var row = document.createElement('tr');
+
+                    var td = document.createElement('td');
+                    td.innerHTML = x[i].children[0].innerHTML;
+                    row.appendChild(td);
+
+                    var td = document.createElement('td');
+                    td.innerHTML = x[i].children[1].innerHTML;
+                    row.appendChild(td);
+
+                    var td = document.createElement('td');
+                    td.innerHTML = x[i].children[2].innerHTML;
+                    row.appendChild(td);
+
+                    var td = document.createElement('td');
+                    td.innerHTML = x[i].children[3].innerHTML;
+                    row.appendChild(td);
+
+                    //console.log(row);
+
+                    tb.children[0].appendChild(row);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Book Details</h2>
+    Filter by Category : <select id="category">
+        <option value="Drama">Drama</option>
+        <option value="Science fiction">Science fiction</option>
+    </select>
+    <input type="button" id="display" value="Submit" onclick="sortBook()">
+    <div id="result"></div>
+</body>
+
+</html>

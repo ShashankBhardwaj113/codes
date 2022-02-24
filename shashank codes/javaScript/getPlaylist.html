@@ -1,0 +1,57 @@
+<html>
+<head>
+    <script>
+        function retrievePlaylist() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xhttp.open("GET", "playlist.xml", true);
+            xhttp.send();
+        }
+
+        function myFunction(xml) {
+            var x, i, xmlDoc, txt;
+            xmlDoc = xml.responseXML;
+            //var cat = document.getElementById('category').value;
+            //console.log(cat);
+            x = xmlDoc.getElementsByTagName('song');
+            document.getElementById('playlist').innerHTML = `
+                        <table id="tab">
+                            <tr>
+                                <th>Song</th>
+                                <th>Artist</th>
+                            </tr>
+                        </table>`;
+            //console.log(document.getElementById('result').innerHTML);
+            var txt = document.getElementById('playlist').innerHTML;
+            var tb = document.getElementById('tab');
+            for (i = 0; i < x.length; i++) {
+                var row = document.createElement('tr');
+
+                var td = document.createElement('td');
+                td.innerHTML = x[i].children[0].innerHTML;
+                row.appendChild(td);
+
+                var td = document.createElement('td');
+                td.innerHTML = x[i].children[1].innerHTML;
+                row.appendChild(td);
+
+                //console.log(row);
+
+                tb.children[0].appendChild(row);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- fill your code -->
+    <h1>Ajax</h1>
+    <button id="getPlaylist" onclick="retrievePlaylist()"> Convert to JSON</button>
+    <div id="playlist"></div>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        var p = 0;
+        var c = 0;
+        function validate() {
+            //Fill code here
+            if (p === 1 && c === 1) {
+                document.getElementById('success').innerHTML = "Details stored in database";
+            }
+
+        }
+        function checkPhoneNumber() {
+
+            //Fill code here
+            /*var regex = /^[A-Za-z]/
+           var isValid = regex.test(document.getElementById("phoneNumber").value);
+           console.log(isValid);
+           if(isValid){
+               document.getElementById('phoneNumber_warning').innerHTML = "Phone number must contain only digits";
+           }*/
+            console.log(document.getElementById('phoneNumber').value);
+            if (document.getElementById('phoneNumber').value.search(/[^A-Za-z\s]/) != -1) {
+                var phoneNumLen = document.getElementById('phoneNumber').value.length + 1;
+                console.log(phoneNumLen);
+                if (phoneNumLen < 10 || phoneNumLen > 10) {
+                    document.getElementById('phoneNumber_warning').innerHTML = "Phone number must be 10 digits";
+                    p = 0;
+                }
+                else if (phoneNumLen === 10) {
+                    document.getElementById('phoneNumber_warning').innerHTML = "";
+                    p = 1;
+                }
+            } else {
+                document.getElementById('phoneNumber_warning').innerHTML = "Phone number must contain only digits";
+            }
+            /*else{
+                var phoneNumLen = document.getElementById('phoneNumber').value.length + 1;
+                console.log(phoneNumLen);
+                if(phoneNumLen < 10 || phoneNumLen > 10){
+                    document.getElementById('phoneNumber_warning').innerHTML = "Phone number must be 10 digits";
+                    p = 0;
+                }
+                else if(phoneNumLen === 10){
+                    document.getElementById('phoneNumber_warning').innerHTML = "";
+                    p = 1;
+                }
+            }*/
+
+        }
+        function checkCardNumber() {
+
+            //Fill code here
+            var regex = /^[A-Za-z]/
+            var isValid = regex.test(document.getElementById("cardNumber").value);
+            if (isValid) {
+                document.getElementById('cardNumber_warning').innerHTML = "Card number must contain only digits";
+            }
+            else {
+                var cardNumLen = document.getElementById('cardNumber').value.length + 1;
+                console.log(cardNumLen);
+                if (cardNumLen < 16 || cardNumLen > 16) {
+                    document.getElementById('cardNumber_warning').innerHTML = "Card number must be 16 digits";
+                    c = 0;
+                }
+                else if (cardNumLen === 16) {
+                    document.getElementById('cardNumber_warning').innerHTML = "";
+                    c = 1;
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <h3>Phone Number & Card Validation</h3>
+    Enter your Phone Number:<input id="phoneNumber" onkeydown="checkPhoneNumber()" type="text">
+    <div id="phoneNumber_warning"></div></br>
+
+    Enter your Card Number:<input id="cardNumber" onkeydown="checkCardNumber()" type="text">
+    <div id="cardNumber_warning"></div></br>
+    <button type="button" onclick="validate()">Validate</button>
+    <div id="success"></div>
+</body>
+
+</html>

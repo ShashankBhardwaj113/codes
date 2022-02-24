@@ -1,0 +1,42 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <!--  fill your code here -->
+    <h1>Grade Sheet</h1>
+    <p>Marks <input type='text' id='mark' name='mark'></p>
+    <button name='submit' id='sub' onclick='myFunction()'> Submit</button>
+    <div id='result'></div>
+</body>
+<script>
+    myFunction = function () {
+        let numbers = parseInt(document.getElementById('mark').value);
+        if (numbers === 100) {
+            document.getElementById('result').innerHTML = 'Grade obtained by the student is : A+'
+            document.getElementById('result').style.color = 'green';
+        } else if (numbers <= 99 && numbers >= 90) {
+            document.getElementById('result').innerHTMl = 'Grade obtained by the student is : A'
+            document.getElementById('result').style.color = 'green';
+        } else if (numbers <= 89 && numbers >= 80) {
+            document.getElementById('result').innerHTML = 'Grade obtained by the student is : B'
+            document.getElementById('result').style.color = 'green';
+        } else if (numbers <= 79 && numbers >= 70) {
+            document.getElementById('result').innerHTML = 'Grade obtained by the student is : C'
+            document.getElementById('result').style.color = 'green';
+        } else if (numbers <= 69 && numbers >= 60) {
+            document.getElementById('result').innerHTML = 'Grade obtained by the student is : D'
+            document.getElementById('result').style.color = 'green';
+        } else if (numbers <= 59 && numbers >= 50) {
+            document.getElementById('result').innerHTML = 'Grade obtained by the student is : E'
+            document.getElementById('result').style.color = 'green';
+        } else if (numbers < 50) {
+            document.getElementById('result').innerHTML = 'Grade obtained by the student is : RA'
+            document.getElementById('result').style.color = 'red';
+        }
+    }
+</script>
+
+</html>
