@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="utf-8">
+    <!--Fill Code here-->
+	<style>
+        .detail-holder{
+            text-align: center;
+        }
+        img{
+            width: 12px;
+            height: 12px
+        }
+        ul{
+            list-style: none;
+            /*display: grid;
+            grid-template-columns: 25% 25% 25% 25%;*/
+        }
+        li{
+            display: inline;
+            margin-right: 150px;
+            margin-left: 50px;
+        }
+        header{
+            text-align : center;
+            background-color: white;
+        }
+        /*monitor*/
+        @media(max-width: 1024px){
+            body{
+                width: 100%
+            }
+        }
+        /*tablet*/
+        @media(max-width: 991px){
+            body{
+                width: 85%;
+            }
+        }
+        /*phones*/
+        @media(max-width: 768px){
+            body{
+                width: 70%;
+            }
+            p{
+                display: none;
+            }
+        }
+	</style>
+    <head>
+
+    <body>
+        <header>
+            <!--Fill code here-->
+            <nav id="navbar">
+                <nav>
+                    <ul class="container">
+                        <li><img src="usericon.png"> <p>ABOUT ME</p></li>
+                        <li><img src="icon-2.png"> <p>RESUME</p></li>
+                        <li><img src="icon-3.png"> <p>PROTFOLIO</p></li>
+                        <li><img src="icon-4.png"> <p>CONTACT ME</p></li>
+                    </ul>
+                </nav>
+            </nav>
+	    </header>
+        <main>
+            <div class="detail-holder">
+                <h3>CONTACT ME</h3>
+                <hr>
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname">
+                    <label for="dob">Date Of Birth</label>
+                    <input type="date" id="dob" name="dob">
+                    </br>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                    <label for="mobilenumber">Mobile</label>
+                    <input type="text" id="mobilenumber" maxlength="10" name="mobilenumber">
+                    <label for="reason">Reason</label>
+                    <select id="reason-select" name="reason">
+                        <option value=""></option>
+                        <option value="Business">Business</option>
+                    </select>
+                    </br>
+                    <label for="gender">Gender</label>
+                    <label for="modeOfContact">Prefferred Mode Of Communication</label>
+                    </br>
+                    <label name="Male">Male</label>
+                    <input type="radio" id="male" name="Male">
+                    <label for="gender">Female</label>
+                    <input type="radio" id="female" name="gender">
+                    <label for="Mobile">Mobile</label>
+                    <input type="checkbox" id="mobile" name="Mobile">
+                    <label for="Email">Email</label>
+                    <input type="checkbox" id="email" name="Email">
+                    </br>
+                    Message</br>
+                    <textarea id="Message"></textarea>
+                    </br>
+                    <input type="submit" id="sub" value="Submit">
+                </div>
+            </div>
+        </main>
+    </body>
+
+</html>
