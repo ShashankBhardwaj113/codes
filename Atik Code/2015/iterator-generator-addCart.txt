@@ -1,0 +1,24 @@
+var fs = require('fs');
+var input=fs.readFileSync('input.txt').toString().trim().split('\n');
+
+//fill your code
+class Cart{
+    
+    products = [];
+
+    addToCart = function(arr){
+        //console.log([...arr])
+        this.products = [...arr]
+    }
+
+    displayCart = function(){
+        for(let item in this.products){
+            console.log("Product "+ (Number(item)+1) +" : "+ this.products[item] )
+        }
+    }
+}
+
+//console.log(input[0])
+var obj = new Cart()
+obj.addToCart(input)
+obj.displayCart()

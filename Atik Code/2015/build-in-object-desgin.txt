@@ -1,0 +1,23 @@
+var fs=require('fs');
+var input= fs.readFileSync("input.txt").toString().trim().split("\n");
+
+//Fill Code here
+
+function filterArray(arr){
+    if(arr%10===0)
+        return arr
+}
+array = []
+
+for(let a of input)
+    array.push(Number(a))
+
+arr = array.filter(filterArray);
+
+if(arr.length > 0){
+    for(let item of arr)
+        console.log(item)
+}
+else{
+    console.log("No elements that are multiples of 10")
+}
