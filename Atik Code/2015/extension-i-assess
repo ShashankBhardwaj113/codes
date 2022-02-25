@@ -1,0 +1,21 @@
+var fs = require('fs');
+var input = fs.readFileSync('input.txt').toString();
+
+//Fill your code
+let basicSalary = Number(input)
+let HRA = 0
+let DA = 0
+if(basicSalary < 15000){
+    HRA = Math.floor(.15 * basicSalary)
+    DA = Math.ceil(.9 * basicSalary)
+    basicSalary += (HRA + DA)
+    console.log(basicSalary.toFixed(2))
+}
+else{
+    HRA = 5000
+    DA = .98 *basicSalary
+    basicSalary += (HRA + DA)
+    console.log(Math.trunc(Math.round(basicSalary)))
+}
+
+
