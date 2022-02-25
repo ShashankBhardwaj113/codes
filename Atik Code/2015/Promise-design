@@ -1,0 +1,23 @@
+var fs = require('fs');
+var input = fs.readFileSync('input.txt').toString().trim();
+
+//Fill your code
+str = input.split(',')
+
+var promise = new Promise(function(resolve, reject) {
+var firstString = str[0];
+var secondString= str[1]
+if(firstString === secondString) {
+    resolve();
+}
+
+else {
+    reject();
+}
+});
+
+promise.then(function () {
+    console.log("Two strings are equal")
+}).catch(function () {
+console.log("Two strings are not equal")
+});
