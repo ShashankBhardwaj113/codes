@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ajax</h1>
+        <button type="button" id="getPlaylist" onclick="loadDoc()">Get Playlist</button>>
+        <div id="playlist">
+            <table id="demo"></table>
+        </div>
+    <script>
+        function loadDoc() {
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  myFunction(this);
+                }
+              };
+              xhttp.open("GET", "playlist.xml", true);
+              xhttp.send();
+            }
+            function myFunction(xml){
+                var i;
+                var xmlDoc=xml.responseXML;
+                var table="<tr><th>Song</th><th>Artist</th></tr>";
+                var x=xmlDoc.getElementsByTagName("song");
+                for (i = 0; i <x.length; i++) { 
+                            table += "<tr><td>" +
+                            x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
+                            "</td><td>" +
+                            x[i].getElementsByTagName("artist")[0].childNodes[0].nodeValue +
+                            "</td></tr>";
+                        }
+                        document.getElementById("demo").innerHTML = table;
+                        }
+
+
+
+
+            
+
+
+    </script>
+
+    
+</body>
+</html>
