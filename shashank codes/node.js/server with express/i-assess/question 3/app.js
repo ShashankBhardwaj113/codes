@@ -46,4 +46,7 @@ app.get('/event/4', (req, res)=>{
             <p>Event Id : ${events.four.eventId}</br>
             Event Name : ${events.four.eventName}</p>`)
 })
+app.get('*', (req, res)=>{
+  res.send(`<p>Oops! Page Not found</p>`)
+})
 app.listen(app.get('port'));
