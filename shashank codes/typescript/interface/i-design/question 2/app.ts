@@ -25,5 +25,8 @@ fs.readFile("input.txt","utf-8",function(err,data){
                 });
                 }
     
-    console.log(JSON.stringify(jsonString));
+    // jsonString = JSON.stringify(jsonString);
+    // let unquoted = jsonString.replace(/"([^"]+)":/g, '$1:');
+    // unquoted = unquoted.replace(/["]+/gm,`'`);
+    console.log(jsonString);
 })
