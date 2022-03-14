@@ -42,7 +42,7 @@ fs.readFile("input.txt","utf-8",function(err,data){
         }
         claculatePrice(): void{
             super.claculatePrice();
-            if(parseInt(this.releasedYear) > parseInt(this.purchasedYear)){
+            if(parseInt(this.releasedYear) < parseInt(this.purchasedYear)){
                 this.finalPrice = this.finalPrice - 1000;
             }
         }
