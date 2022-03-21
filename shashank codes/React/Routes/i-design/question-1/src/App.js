@@ -7,9 +7,10 @@ const App = () => {
   const loginState = (state) => {
 
     if(state === 1){
-      navigate("/user");
+      navigate("/admin");
       return 1;
     }else if(state === 2){
+      navigate("/user");
       return 2;
     }else{
       return 0;
