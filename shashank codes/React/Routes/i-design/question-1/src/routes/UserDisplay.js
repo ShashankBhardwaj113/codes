@@ -5,12 +5,14 @@ const UserDisplay = () => {
     return (
         <table>
             <thead>
-                <th>Id</th>
-                <th>Name</th>
-                <th>UserName</th>
-                <th>Email</th>
-                <th>Mobile</th>
-                <th>Address</th>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                </tr>
             </thead>
             <tbody>
                     {
