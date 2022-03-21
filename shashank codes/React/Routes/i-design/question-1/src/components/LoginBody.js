@@ -19,7 +19,7 @@ const LoginBody = (props) => {
         event.preventDefault();
         
         for(let i=0; i<userList.length; i++){
-            console.log(i);
+            
             if(userList[i].username === enteredUsername && userList[i].password === enteredPassword){
                 if(userList[i].role === 'admin'){
                     setLogState(1);
