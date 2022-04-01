@@ -4,7 +4,7 @@ import Profile from './Profile';
 function App() {
   const data = {
       title:'My Profile',
-      profileicon:require('./Image/ProfileImg.png'),
+      profileicon:require('./image/profileicon.png'),
       name:'William',
       email:'william@gmail.com',
       mobilenumber:'8976541234',

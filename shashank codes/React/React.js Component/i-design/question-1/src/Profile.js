@@ -2,13 +2,16 @@ import React from 'react';
 
 const Profile = (props) => {
     return(
-        <div className='container'>
-            <h1>TechCrunch</h1>
-            <div id='profile-info'>
-                <h2>My Profile</h2>
-                <img id='profile-icon' src={props.profileicon} alt='*'></img>
-                <div id='profile-details'>
-                    <table>
+        <React.Fragment>
+            <div className='container'>
+            <h1 style={{textAlign: 'center'}}>TechCrunch</h1>
+            <div id='profile-info' style={{border: '2px solid black', marginLeft:'100px', marginRight:'100px'}}>
+                <h2 style={{textAlign: 'center'}}>My Profile</h2>
+                <img id='profile-icon' style={{marginLeft:'auto', display:'block', marginRight:'auto'}} src={props.profileicon} alt=''></img>
+                <div id='profile-details' style={{ backgroundColor:'grey'}}>
+                    <table style={{marginLeft: 'auto', marginRight: 'auto'}}>
+                        <thead>
+                        </thead>
                         <tbody>
                         <tr>
                         <td>Name : </td>
@@ -35,6 +38,7 @@ const Profile = (props) => {
                 </div>
             </div>
         </div>
+        </React.Fragment>
     );
 }
 
