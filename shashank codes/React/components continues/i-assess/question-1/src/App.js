@@ -8,18 +8,18 @@ const App = () => {
     const [uncheckedFilter, setUncheckedFilter] = React.useState();
 
     const getUncheckedFilters = (uncheckedFilters) => {
-        console.log(uncheckedFilter);
+        // console.log(uncheckedFilters);
         setUncheckedFilter(uncheckedFilters);
 
-        if(uncheckedFilter !== undefined){
+        if (uncheckedFilters !== undefined) {
             // let array = [...selectedFilter];
-            var index = selectedFilter.indexOf(uncheckedFilter);
-            if(index !== -1){
+            var index = selectedFilter.indexOf(uncheckedFilters);
+            if (index !== -1) {
                 // 
                 const newFilters = selectedFilter.filter((item) => {
-                    return item !== uncheckedFilter;
+                    return item !== uncheckedFilters;
                 })
-                console.log(newFilters);
+                // console.log('newFilters ' + newFilters);
                 setSelectedFilter(newFilters);
             }
             setUncheckedFilter();
@@ -27,25 +27,24 @@ const App = () => {
     }
 
     const getFilter = (filter) => {
-        console.log(filter);
+        // console.log(filter);
         var filterIndex = selectedFilter.indexOf(filter);
-        if(filterIndex === -1)
-        {
-            setSelectedFilter((prevState)=>{
+        if (filterIndex === -1) {
+            setSelectedFilter((prevState) => {
                 return [...prevState, filter];
             });
         }
     }
 
-    React.useEffect(()=>{
-        console.log('selectedFilter are ' + selectedFilter);
+    React.useEffect(() => {
+        // console.log('selectedFilter are ' + selectedFilter);
     }, [selectedFilter, uncheckedFilter]);
 
     return (
         <>
             <Header />
-            <table style={{display: 'grid', gridTemplateColumns: '25% 75%'}}>
-                <LeftPanel getFilter={getFilter} getUncheckedFilters={getUncheckedFilters}/>
+            <table style={{ display: 'grid', gridTemplateColumns: '25% 75%' }}>
+                <LeftPanel getFilter={getFilter} getUncheckedFilters={getUncheckedFilters} />
                 <RightPanel selectedFilter={selectedFilter} />
             </table>
         </>

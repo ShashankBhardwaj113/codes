@@ -11,90 +11,89 @@ const LeftPanel = (props) => {
     const [initialRender, setInitialRender] = React.useState(true);
 
     const selectLanguageHandler = () => {
-        if(!clickOnLanguageFilter)
-        {
+        if (!clickOnLanguageFilter) {
             setLanguageFilter(true);
-        }else{
+        } else {
             setLanguageFilter(false);
         }
     }
 
     const selectGenreHandler = () => {
-        if(!clickOnGenreFilter){
+        if (!clickOnGenreFilter) {
             setGenreFilter(true);
-        }else{
+        } else {
             setGenreFilter(false);
         }
     }
 
     const selectFormatHandler = () => {
-        if(!clickOnFormatFilter){
+        if (!clickOnFormatFilter) {
             setFormatFilter(true);
-        }else{
+        } else {
             setFormatFilter(false);
         }
     }
 
     const checkboxOnChangeHandler = (event) => {
-        if(event.target.checked){
+        if (event.target.checked) {
             setCheckedFilter(event.target.value);
         }
-        else{
+        else {
             setUncheckedFilter(event.target.value);
         }
     }
 
-    React.useEffect(()=>{
-        if(initialRender){
+    React.useEffect(() => {
+        if (initialRender) {
             setInitialRender(false);
         }
-        else{
-            if(checkedFilter !== null)
+        else {
+            if (checkedFilter !== null) {
                 props.getFilter(checkedFilter);
                 setCheckedFilter(null);
-            if(uncheckedFilter !== null){
-                console.log(uncheckedFilter);
+            }
+            if (uncheckedFilter !== null) {
                 props.getUncheckedFilters(uncheckedFilter);
                 setUncheckedFilter(null);
             }
         }
     }, [checkedFilter, uncheckedFilter])
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         return;
     }, [clickOnLanguageFilter, clickOnGenreFilter, clickOnFormatFilter]);
 
     return (
         <>
-            <td style={{textAlign: 'center'}}>
+            <td style={{ textAlign: 'center' }}>
                 <p onClick={selectLanguageHandler}>Select language</p>
                 {
-                    clickOnLanguageFilter && language.map((lang)=>{
-                        return <>
+                    clickOnLanguageFilter && language.map((lang) => {
+                        return <div key={lang.id}>
                             <input type='checkbox' onChange={checkboxOnChangeHandler} name={lang.value} value={lang.value} />
                             <label htmlFor={lang.value}>{lang.value}</label>
                             <br></br>
-                        </>
+                        </div>
                     })
                 }
                 <p onClick={selectGenreHandler}>Select Genre</p>
                 {
-                    clickOnGenreFilter && gener.map((genre)=>{
-                        return <>
+                    clickOnGenreFilter && gener.map((genre) => {
+                        return <div key={genre.id}>
                             <input type='checkbox' onChange={checkboxOnChangeHandler} name={genre.value} value={genre.value} />
                             <label htmlFor={genre.value}>{genre.value}</label>
                             <br></br>
-                        </>
+                        </div>
                     })
                 }
                 <p onClick={selectFormatHandler}>Select Format</p>
                 {
-                    clickOnFormatFilter && format.map((format)=>{
-                        return <>
+                    clickOnFormatFilter && format.map((format) => {
+                        return <div key={format.id}>
                             <input type='checkbox' onChange={checkboxOnChangeHandler} name={format.value} value={format.value} />
                             <label htmlFor={format.value}>{format.value}</label>
                             <br></br>
-                        </>
+                        </div>
                     })
                 }
             </td>
