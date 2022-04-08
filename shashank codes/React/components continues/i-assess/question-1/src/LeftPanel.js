@@ -6,8 +6,13 @@ const LeftPanel = (props) => {
     const [clickOnGenreFilter, setGenreFilter] = React.useState(false);
     const [clickOnFormatFilter, setFormatFilter] = React.useState(false);
 
-    const [checkedFilter, setCheckedFilter] = React.useState(null);
-    const [uncheckedFilter, setUncheckedFilter] = React.useState(null);
+    const [checkedLangFilter, setCheckedLangFilter] = React.useState(null);
+    const [uncheckedLangFilter, setUncheckedLangFilter] = React.useState(null);
+    const [checkedGenerFilter, setCheckedGenerFilter] = React.useState(null);
+    const [uncheckedGenerFilter, setUncheckedGenerFilter] = React.useState(null);
+    const [checkedFormatFilter, setCheckedFormatFilter] = React.useState(null);
+    const [uncheckedFormatFilter, setUncheckedFormatFilter] = React.useState(null);
+
     const [initialRender, setInitialRender] = React.useState(true);
 
     const selectLanguageHandler = () => {
@@ -34,12 +39,30 @@ const LeftPanel = (props) => {
         }
     }
 
-    const checkboxOnChangeHandler = (event) => {
+    const checkboxOnChangeHandlerLang = (event) => {
         if (event.target.checked) {
-            setCheckedFilter(event.target.value);
+            setCheckedLangFilter(event.target.value);
         }
         else {
-            setUncheckedFilter(event.target.value);
+            setUncheckedLangFilter(event.target.value);
+        }
+    }
+
+    const checkboxOnChangeHandlerGener = (event) => {
+        if (event.target.checked) {
+            setCheckedGenerFilter(event.target.value);
+        }
+        else {
+            setUncheckedGenerFilter(event.target.value);
+        }
+    }
+
+    const checkboxOnChangeHandlerFormat = (event) => {
+        if (event.target.checked) {
+            setCheckedFormatFilter(event.target.value);
+        }
+        else {
+            setUncheckedFormatFilter(event.target.value);
         }
     }
 
@@ -48,16 +71,31 @@ const LeftPanel = (props) => {
             setInitialRender(false);
         }
         else {
-            if (checkedFilter !== null) {
-                props.getFilter(checkedFilter);
-                setCheckedFilter(null);
+            if (checkedLangFilter !== null) {
+                props.getFilterLang(checkedLangFilter);
+                setCheckedLangFilter(null);
+            } if (uncheckedLangFilter !== null) {
+                props.getUncheckedFiltersLang(uncheckedLangFilter);
+                setUncheckedLangFilter(null);
             }
-            if (uncheckedFilter !== null) {
-                props.getUncheckedFilters(uncheckedFilter);
-                setUncheckedFilter(null);
+
+            if (checkedGenerFilter !== null) {
+                props.getFilterGener(checkedGenerFilter);
+                setCheckedGenerFilter(null);
+            } if (uncheckedGenerFilter !== null) {
+                props.getUncheckedFiltersGener(uncheckedGenerFilter);
+                setUncheckedGenerFilter(null);
+            }
+
+            if (checkedFormatFilter !== null) {
+                props.getFilterFormat(checkedFormatFilter);
+                setCheckedFormatFilter(null);
+            } if (uncheckedFormatFilter !== null) {
+                props.getUncheckedFiltersFormat(uncheckedFormatFilter);
+                setUncheckedFormatFilter(null);
             }
         }
-    }, [checkedFilter, uncheckedFilter])
+    }, [checkedLangFilter, uncheckedLangFilter, checkedGenerFilter, uncheckedGenerFilter, checkedFormatFilter, uncheckedFormatFilter])
 
     React.useEffect(() => {
         return;
@@ -70,7 +108,7 @@ const LeftPanel = (props) => {
                 {
                     clickOnLanguageFilter && language.map((lang) => {
                         return <div key={lang.id}>
-                            <input type='checkbox' onChange={checkboxOnChangeHandler} name={lang.value} value={lang.value} />
+                            <input type='checkbox' onChange={checkboxOnChangeHandlerLang} name={lang.value} value={lang.value} />
                             <label htmlFor={lang.value}>{lang.value}</label>
                             <br></br>
                         </div>
@@ -80,7 +118,7 @@ const LeftPanel = (props) => {
                 {
                     clickOnGenreFilter && gener.map((genre) => {
                         return <div key={genre.id}>
-                            <input type='checkbox' onChange={checkboxOnChangeHandler} name={genre.value} value={genre.value} />
+                            <input type='checkbox' onChange={checkboxOnChangeHandlerGener} name={genre.value} value={genre.value} />
                             <label htmlFor={genre.value}>{genre.value}</label>
                             <br></br>
                         </div>
@@ -90,7 +128,7 @@ const LeftPanel = (props) => {
                 {
                     clickOnFormatFilter && format.map((format) => {
                         return <div key={format.id}>
-                            <input type='checkbox' onChange={checkboxOnChangeHandler} name={format.value} value={format.value} />
+                            <input type='checkbox' onChange={checkboxOnChangeHandlerFormat} name={format.value} value={format.value} />
                             <label htmlFor={format.value}>{format.value}</label>
                             <br></br>
                         </div>
