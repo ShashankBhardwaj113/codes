@@ -95,7 +95,7 @@ const LeftPanel = (props) => {
                 setUncheckedFormatFilter(null);
             }
         }
-    }, [checkedLangFilter, uncheckedLangFilter, checkedGenerFilter, uncheckedGenerFilter, checkedFormatFilter, uncheckedFormatFilter])
+    }, [checkedLangFilter, uncheckedLangFilter, checkedGenerFilter, uncheckedGenerFilter, checkedFormatFilter, uncheckedFormatFilter, initialRender, props])
 
     React.useEffect(() => {
         return;
@@ -103,7 +103,7 @@ const LeftPanel = (props) => {
 
     return (
         <>
-            <td style={{ textAlign: 'center' }}>
+            <div className='left-panel' style={{ textAlign: 'center' }}>
                 <p onClick={selectLanguageHandler}>Select language</p>
                 {
                     clickOnLanguageFilter && language.map((lang) => {
@@ -134,7 +134,7 @@ const LeftPanel = (props) => {
                         </div>
                     })
                 }
-            </td>
+            </div>
         </>
     );
 }

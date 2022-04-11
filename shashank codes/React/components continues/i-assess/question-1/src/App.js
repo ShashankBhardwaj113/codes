@@ -122,7 +122,7 @@ const App = () => {
         <>
             {movieSelect === null && <>
                 <Header />
-                <table style={{ display: 'grid', gridTemplateColumns: '25% 75%' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '25% 75%' }}>
                     <LeftPanel getFilterLang={getFilterLang}
                         getFilterGener={getFilterGener}
                         getFilterFormat={getFilterFormat}
@@ -134,7 +134,7 @@ const App = () => {
                         selectedFilterFormat={selectedFilterFormat}
                         getMovieHandler={getMovieHandler}
                     />
-                </table>
+                </div>
             </>}
             {
                 movieSelect !== null &&

@@ -9,12 +9,12 @@ const RightPanel = (props) => {
 
     return (
         <>
-            <td>
+            <div className='right-panel'>
                 {//no filters are selected
                     (props.selectedFilterLang.length === 0 && props.selectedFilterGener.length === 0 && props.selectedFilterFormat.length === 0) &&
                     nowShowing.map((movie) => {
-                        return <div>
-                            <img key={movie.id} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
+                        return <div id={movie.cardsID}>
+                            <img key={movie.id} id={movie.imagesID} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
                         </div>
                     })
                 }
@@ -23,8 +23,8 @@ const RightPanel = (props) => {
                     nowShowing.map((movie) => {
                         return <>
                             {props.selectedFilterLang.map((filter) => {
-                                return <div>
-                                    {movie.language === filter && <img key={movie.id} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />}
+                                return <div id={movie.cardsID}>
+                                    {movie.language === filter && <img key={movie.id} id={movie.imagesID} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />}
                                 </div>
                             })}
                         </>
@@ -35,8 +35,8 @@ const RightPanel = (props) => {
                     nowShowing.map((movie) => {
                         return <>
                             {props.selectedFilterGener.map((filter) => {
-                                return <div>
-                                    {movie.gener === filter && <img key={movie.id} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />}
+                                return <div id={movie.cardsID}>
+                                    {movie.gener === filter && <img key={movie.id} id={movie.imagesID} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />}
                                 </div>
                             })}
                         </>
@@ -47,8 +47,8 @@ const RightPanel = (props) => {
                     nowShowing.map((movie) => {
                         return <>
                             {props.selectedFilterFormat.map((filter) => {
-                                return <div>
-                                    {movie.format === filter && <img key={movie.id} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />}
+                                return <div id={movie.cardsID}>
+                                    {movie.format === filter && <img key={movie.id} id={movie.imagesID} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />}
                                 </div>
                             })}
                         </>
@@ -61,9 +61,9 @@ const RightPanel = (props) => {
                             {props.selectedFilterLang.map((langFilter) => {
                                 return <>
                                     {props.selectedFilterGener.map((generFilter) => {
-                                        return <div>
+                                        return <div id={movie.cardsID}>
                                             {(movie.language === langFilter && movie.gener === generFilter) &&
-                                                <img key={movie.id} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
+                                                <img key={movie.id} src={movie.src} id={movie.imagesID} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
                                             }
                                         </div>
                                     })}
@@ -81,7 +81,7 @@ const RightPanel = (props) => {
                                     {props.selectedFilterFormat.map((formatFilter) => {
                                         return <div>
                                             {(movie.gener === generFilter && movie.format === formatFilter) &&
-                                                <img key={movie.id} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
+                                                <img key={movie.id} src={movie.src} id={movie.imagesID} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
                                             }
                                         </div>
                                     })}
@@ -99,7 +99,7 @@ const RightPanel = (props) => {
                                     {props.selectedFilterFormat.map((formatFilter) => {
                                         return <div>
                                             {(movie.language === langFilter && movie.format === formatFilter) &&
-                                                <img key={movie.id} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
+                                                <img key={movie.id} src={movie.src} id={movie.imagesID} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
                                             }
                                         </div>
                                     })}
@@ -119,7 +119,7 @@ const RightPanel = (props) => {
                                             {props.selectedFilterGener.map((generFilter) => {
                                                 return <div>
                                                     {(movie.language === langFilter && movie.format === formatFilter && movie.gener === generFilter) &&
-                                                        <img key={movie.id} src={movie.src} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
+                                                        <img key={movie.id} src={movie.src} id={movie.imagesID} movieid={movie.id} onClick={onMovieClickHandler} alt='*' />
                                                     }
                                                 </div>
                                             })}
@@ -130,7 +130,7 @@ const RightPanel = (props) => {
                         </>
                     })
                 }
-            </td>
+            </div>
         </>);
 }
 

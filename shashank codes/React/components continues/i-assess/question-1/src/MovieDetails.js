@@ -7,12 +7,24 @@ const MovieDetails = (props) => {
 
     return (
         <div>
-            <div>
-                <button onClick={onClickkHandler}> {`<`} </button>
+            <div id='back-arrow'>
+                <button onClick={onClickkHandler} style={{ borderRadius: '50%' }}> {`<`} </button>
             </div>
-            <img src={props.movie.src} />
-            <div>{props.movie.name}</div>
-            <div>
+            <div className='image-bg'>
+                <div id='movie-name'>
+                    {props.movie.name}
+                </div>
+            </div>
+            <img id='movie-img' src={props.movie.src} alt='*' />
+            <ul style={{ listStyleType: 'none', margin: '0', padding: '0', overflow: 'hidden' }}>
+                <li id='summar'>
+                    Summary
+                </li>
+                <li id='showTimings'>
+                    Show Timings
+                </li>
+            </ul>
+            <div id='synopsis'>
                 <h3>Synopsis</h3>
                 <p>{props.movie.synopsis}</p>
             </div>

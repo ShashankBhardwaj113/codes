@@ -4,6 +4,8 @@ export let nowShowing = [
         "name": "Bombshell",
         "language": "English",
         "gener": "Commercial",
+        "cardsID": "cards1",
+        "imagesID": "images1",
         "format": "2D",
         src: require('./images/bombshell.jpg'),
         synopsis: "Bombshell is a 2019 American biographical drama film directed by Jay Roach and written by Charles Randolph. The film stars Charlize Theron, Nicole Kidman, and Margot Robbie, and is based upon the accounts of the women at Fox News who set out to expose CEO Roger Ailes for sexual harassment. Actors John Lithgow, Kate McKinnon, Connie Britton, Malcolm McDowell, and Allison Janney appear in supporting roles."
@@ -13,6 +15,8 @@ export let nowShowing = [
         "name": "The Grudge",
         "language": "Hindi",
         "gener": "Horror",
+        "cardsID": "cards2",
+        "imagesID": "images2",
         "format": "2D",
         src: require('./images/thegrudge.jpg'),
         synopsis: "A detective investigates a murder scene that has a connection to a case that her new partner handled in the past. The killings occurred in a haunted house that passes on a ghostly curse to those who dare enter it. Soon, the curse spreads to a terminally ill woman and her husband, and another unsuspecting couple who were in the wrong place at the wrong time."
@@ -23,6 +27,8 @@ export let nowShowing = [
         "name": "Mafia",
         "language": "Tamil",
         "gener": "Action",
+        "cardsID": "cards3",
+        "imagesID": "images3",
         "format": "2D",
         src: require('./images/mafia.jpg'),
         synopsis: "Set in Chennai, Mafia Chapter 1 is a high octane gangster drama that portrays a cat and mouse game between two powerful characters. This captivating and gritty narrative will keep you on the edge of your seat."
@@ -33,6 +39,8 @@ export let nowShowing = [
         "name": "Darbar",
         "language": "Tamil",
         "gener": "Commercial",
+        "cardsID": "cards4",
+        "imagesID": "images4",
         "format": "2D",
         src: require('./images/darbar.png'),
         synopsis: "A police officer on a chase to hunt down a dreaded gangster for fulfilling his own secret agenda."
@@ -43,6 +51,8 @@ export let nowShowing = [
         "name": "Oh My Kadavuley",
         "language": "Tamil",
         "gener": "Comedy",
+        "cardsID": "cards5",
+        "imagesID": "images5",
         "format": "2D",
         src: require('./images/OMK.jpg'),
         synopsis: "Ashok and Ritika are friends who decide to marry each other, but married life is not what they expected. As they get stuck trying to spice up their romantic lives, Meera - Ashok`s former crush - turns up and complicates things further."
@@ -53,6 +63,8 @@ export let nowShowing = [
         "name": "Sonic The Hedgehog",
         "language": "English",
         "gener": "Action",
+        "cardsID": "cards6",
+        "imagesID": "images6",
         "format": "2D",
         src: require('./images/sonic-the-hedgehog.jpg'),
         synopsis: "Based on the popular video game, Sonic The Hedgehog is the first entry in the film series, with its plot revolving around Sonic and his friends, who team up in order to beat the evil Mr. Eggman."
@@ -63,6 +75,8 @@ export let nowShowing = [
         "name": "The Invisible Man",
         "language": "English",
         "gener": "Horror",
+        "cardsID": "cards7",
+        "imagesID": "images7",
         "format": "2D",
         src: require('./images/the-invisible-man.png'),
         synopsis: "The extremely abusive nature of her boyfriend has forced Cecilia to run away. She finds out later that Adrian, her ex-boyfriend has committed suicide. However, Adrian fakes his death, becomes invisible and makes life a living hell for Cecilia. He influences her in a way that makes her look insane to everyone else around."
@@ -73,6 +87,8 @@ export let nowShowing = [
         "name": "Onward",
         "language": "English",
         "gener": "Disney",
+        "cardsID": "cards8",
+        "imagesID": "images8",
         "format": "3D",
         src: require('./images/onward.png'),
         synopsis: "Set in a suburban fantasy world that has forgotten magic, two elf brothers receive a prearranged gift - a magic staff - from their father, who passed away many years ago. They try to use it to bring him back but end up conjuring only the lower half of his body. The two go on a quest in search of magic so they can bring all of him back, but they`ve only got 24 hours till the spell`s effect fades away."
@@ -83,6 +99,8 @@ export let nowShowing = [
         "name": "Baaghi-3",
         "language": "Hindi",
         "gener": "Action",
+        "cardsID": "cards9",
+        "imagesID": "images9",
         "format": "3D",
         src: require('./images/baaghi-3.jpg'),
         synopsis: "Ronnie and Vikram are brothers who share an unbreakable bond. Since childhood, Ronnie always come to the rescue whenever Vikram falls in any trouble. Their journey begins when a certain turn in events, leads Vikram to travel abroad to complete some work. On this trip, Vikram gets kidnapped by people who are not to be messed with but as Ronnie witnesses, his brother getting beaten and kidnapped, he knows that he will do whatever it takes to destroy anyone and anything that stands in the way of Vikram`s safety. Ronnie goes on a rampage of destruction to see his brother safe again, even if it means that he independently has to take on an entire country."
