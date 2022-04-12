@@ -1,155 +1,49 @@
-import React from 'react';
-import Header from './Header';
-import LeftPanel from './LeftPanel';
-import RightPanel from './RightPanel';
-import { nowShowing } from './MovieListJson';
+import React, { useState } from 'react';
+import './App.css'
+import Card from './Card';
 import MovieDetails from './MovieDetails';
+import { nowShowing, comingSoon, exclusive } from './MovieListJson.js';
 
 const App = () => {
-    const [selectedFilterLang, setSelectedFilterLang] = React.useState([]);
-    const [uncheckedFilterLang, setUncheckedFilterLang] = React.useState();
+    const [movie, setMovie] = useState("1");
+    const [detail, setDetail] = useState("body");
+    const [items, setItems] = useState({});
 
-    const [selectedFilterGener, setSelectedFilterGener] = React.useState([]);
-    const [uncheckedFilterGener, setUncheckedFilterGener] = React.useState();
-
-    const [selectedFilterFormat, setSelectedFilterFormat] = React.useState([]);
-    const [uncheckedFilterFormat, setUncheckedFilterFormat] = React.useState();
-
-    const [movieSelect, setMovieSelect] = React.useState(null);
-
-    const getMovieHandler = (movieID) => {
-        setMovieSelect(movieID);
+    function nowShowingHandler() {
+        setMovie("1");
     }
 
-    const goBackHandler = (state) => {
-        setMovieSelect(state);
+    function comingSoonHandler() {
+        setMovie("2");
+    }
+    function exclusiveHandler() {
+        setMovie("3")
     }
 
-    const getUncheckedFiltersLang = (uncheckedLangFilters) => {
-        // console.log(uncheckedFilters);
-        setUncheckedFilterLang(uncheckedLangFilters);
-
-        if (uncheckedLangFilters !== undefined) {
-            // let array = [...selectedFilter];
-            var index = selectedFilterLang.indexOf(uncheckedLangFilters);
-            if (index !== -1) {
-                // 
-                const newFilters = selectedFilterLang.filter((item) => {
-                    return item !== uncheckedLangFilters;
-                })
-                // console.log('newFilters ' + newFilters);
-                setSelectedFilterLang(newFilters);
-            }
-            setUncheckedFilterLang();
-        }
-    }
-
-    const getUncheckedFiltersGener = (uncheckedGenerFilters) => {
-        // console.log(uncheckedFilters);
-        setUncheckedFilterGener(uncheckedGenerFilters);
-
-        if (uncheckedGenerFilters !== undefined) {
-            // let array = [...selectedFilter];
-            var index = selectedFilterGener.indexOf(uncheckedGenerFilters);
-            if (index !== -1) {
-                // 
-                const newFilters = selectedFilterGener.filter((item) => {
-                    return item !== uncheckedGenerFilters;
-                })
-                // console.log('newFilters ' + newFilters);
-                setSelectedFilterGener(newFilters);
-            }
-            setUncheckedFilterGener();
-        }
-    }
-
-    const getUncheckedFiltersFormat = (uncheckedFormatFilters) => {
-        // console.log(uncheckedFilters);
-        setUncheckedFilterFormat(uncheckedFormatFilters);
-
-        if (uncheckedFormatFilters !== undefined) {
-            // let array = [...selectedFilter];
-            var index = selectedFilterFormat.indexOf(uncheckedFormatFilters);
-            if (index !== -1) {
-                // 
-                const newFilters = selectedFilterFormat.filter((item) => {
-                    return item !== uncheckedFormatFilters;
-                })
-                // console.log('newFilters ' + newFilters);
-                setSelectedFilterFormat(newFilters);
-            }
-            setUncheckedFilterFormat();
-        }
-    }
-
-    const getFilterLang = (filter) => {
-        // console.log(filter);
-        var filterIndex = selectedFilterLang.indexOf(filter);
-        if (filterIndex === -1) {
-            setSelectedFilterLang((prevState) => {
-                return [...prevState, filter];
-            });
-        }
-    }
-
-    const getFilterGener = (filter) => {
-        // console.log(filter);
-        var filterIndex = selectedFilterGener.indexOf(filter);
-        if (filterIndex === -1) {
-            setSelectedFilterGener((prevState) => {
-                return [...prevState, filter];
-            });
-        }
-    }
-
-    const getFilterFormat = (filter) => {
-        // console.log(filter);
-        var filterIndex = selectedFilterFormat.indexOf(filter);
-        if (filterIndex === -1) {
-            setSelectedFilterFormat((prevState) => {
-                return [...prevState, filter];
-            });
-        }
-    }
-
-    React.useEffect(() => {
-        // console.log('selectedFilterLang are ' + selectedFilterLang);
-        // console.log('selectedFilterGener are ' + selectedFilterGener);
-        // console.log('selectedFilterFormat are ' + selectedFilterFormat);
-    }, [selectedFilterLang, uncheckedFilterLang, selectedFilterFormat, uncheckedFilterFormat, selectedFilterGener, uncheckedFilterGener]);
-
-    return (
-        <>
-            {movieSelect === null && <>
-                <Header />
-                <div style={{ display: 'grid', gridTemplateColumns: '25% 75%' }}>
-                    <LeftPanel getFilterLang={getFilterLang}
-                        getFilterGener={getFilterGener}
-                        getFilterFormat={getFilterFormat}
-                        getUncheckedFiltersLang={getUncheckedFiltersLang}
-                        getUncheckedFiltersGener={getUncheckedFiltersGener}
-                        getUncheckedFiltersFormat={getUncheckedFiltersFormat} />
-                    <RightPanel selectedFilterLang={selectedFilterLang}
-                        selectedFilterGener={selectedFilterGener}
-                        selectedFilterFormat={selectedFilterFormat}
-                        getMovieHandler={getMovieHandler}
-                    />
+    return <div>
+        {detail == "body" ? (<div><header>
+            <nav className="nav">
+                <ul>
+                    <li id="nowShowing" onClick={nowShowingHandler}>Now Showing</li>
+                    <li id="comingSoon" onClick={comingSoonHandler}>Coming Soon</li>
+                    <li id="exclusive" onClick={exclusiveHandler}>Exclusive</li>
+                </ul>
+            </nav>
+        </header>
+            <div className="align-panel">
+                <div className='left-panel'>
+                    <p>Select Language</p>
+                    <p>Select Gener</p>
+                    <p>Select Format</p>
                 </div>
-            </>}
-            {
-                movieSelect !== null &&
-                <>
-                    {nowShowing.map((movie) => {
-                        return <>
-                            {movie.id === movieSelect &&
-                                <MovieDetails movie={movie} goBackHandler={goBackHandler} />
-                            }
-                        </>
-                    })}
-                </>
-            }
-        </>
-    )
+                <div className="right-panel">
+                    {movie == 1 ? nowShowing.map((nowShowingMovie) => (<Card setDetail={setDetail} setItems={setItems} Movie={nowShowingMovie} cardId={`card${nowShowingMovie.id}`} imageId={`image${nowShowingMovie.id}`} imageSrc={nowShowingMovie.src}></Card>))
+                        : movie == 2 ? comingSoon.map((comingSoonMovie) => (<Card setDetail={setDetail} setItems={setItems} Movie={comingSoonMovie} cardId={`card${comingSoonMovie.id}`} imageId={`image${comingSoonMovie.id}`} imageSrc={comingSoonMovie.src}></Card>))
+                            : exclusive.map((exclusiveMovie) => (<Card setDetail={setDetail} setItems={setItems} Movie={exclusiveMovie} cardId={`card${exclusiveMovie.id}`} imageId={`image${exclusiveMovie.id}`} imageSrc={exclusiveMovie.src}></Card>))}
+                </div>
+            </div>
+        </div>) : <MovieDetails setDetail={setDetail} name={items.name} image={items.src} synopsis={items.synopsis} />}
+    </div>
 }
 
 export default App;
